@@ -39,7 +39,7 @@ const AdminDashboard = () => {
   return (
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar active={section} onChange={setSection} />
-
+      
       <div className="flex-1 flex flex-col">
         <Header />
 
