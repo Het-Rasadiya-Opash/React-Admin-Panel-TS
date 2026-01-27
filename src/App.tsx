@@ -15,11 +15,7 @@ const AdminRoute = ({ children }: { children: JSX.Element }) => {
 };
 
 const App = () => {
-  // useEffect(() => {
-  //   if (!localStorage.getItem("students")) {
-  //     localStorage.setItem("students", JSON.stringify(demoStudents));
-  //   }
-  // }, []);
+ 
 
   return (
     <Routes>

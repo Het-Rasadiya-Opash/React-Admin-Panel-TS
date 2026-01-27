@@ -104,3 +104,9 @@ const demoStudents: Student[] = [
 ];
 
 localStorage.setItem("students", JSON.stringify(demoStudents));
+
+ // useEffect(() => {
+  //   if (!localStorage.getItem("students")) {
+  //     localStorage.setItem("students", JSON.stringify(demoStudents));
+  //   }
+  // }, []);
