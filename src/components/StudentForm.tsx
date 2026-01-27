@@ -19,8 +19,10 @@ const StudentForm = ({
     attendanceAvg: 0,
   });
 
+  const [error, setError] = useState("");
+
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value, type } = e.target;
 
@@ -28,10 +30,26 @@ const StudentForm = ({
       ...prev,
       [name]: type === "number" ? Number(value) : value,
     }));
+
+    setError("");
   };
 
+  const isFormValid =
+    form.name.trim() &&
+    form.enrollmentNo.trim() &&
+    form.std.trim() &&
+    form.subject.trim() &&
+    form.marks > 0 &&
+    form.attendanceAvg >= 0;
+
   const addStudent = () => {
+    if (!isFormValid) {
+      setError("All fields are required");
+      return;
+    }
+
     setStudents([...students, { ...form, id: uuid() }]);
+
     setForm({
       name: "",
       enrollmentNo: "",
@@ -51,65 +69,62 @@ const StudentForm = ({
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="block text-sm text-gray-600 mb-1">Name</label>
+          <label className="block text-sm text-gray-600 mb-1">Name *</label>
           <input
             name="name"
             value={form.name}
             onChange={handleChange}
             className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
-            placeholder="Enter student name"
           />
         </div>
 
         <div>
           <label className="block text-sm text-gray-600 mb-1">
-            Enrollment No
+            Enrollment No *
           </label>
           <input
             name="enrollmentNo"
             value={form.enrollmentNo}
             onChange={handleChange}
             className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
-            placeholder="ENR12345"
           />
         </div>
 
         <div>
-          <label className="block text-sm text-gray-600 mb-1">Class</label>
+          <label className="block text-sm text-gray-600 mb-1">Class *</label>
           <input
             name="std"
             value={form.std}
             onChange={handleChange}
             className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
-            placeholder="10th / 12th"
           />
         </div>
 
         <div>
-          <label className="block text-sm text-gray-600 mb-1">Subject</label>
+          <label className="block text-sm text-gray-600 mb-1">Subject *</label>
           <input
             name="subject"
             value={form.subject}
             onChange={handleChange}
             className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
-            placeholder="Mathematics"
           />
         </div>
 
         <div>
-          <label className="block text-sm text-gray-600 mb-1">Marks</label>
+          <label className="block text-sm text-gray-600 mb-1">Marks *</label>
           <input
             type="number"
             name="marks"
             value={form.marks}
             onChange={handleChange}
+            min={0}
+            max={100}
             className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
-            placeholder="0 - 100"
           />
         </div>
 
         <div>
-          <label className="block text-sm text-gray-600 mb-1">Result</label>
+          <label className="block text-sm text-gray-600 mb-1">Result *</label>
           <select
             name="result"
             value={form.result}
@@ -122,9 +137,19 @@ const StudentForm = ({
         </div>
       </div>
 
+      {error && (
+        <p className="text-red-500 text-sm mt-3 font-medium">{error}</p>
+      )}
+
       <button
         onClick={addStudent}
-        className="mt-6 w-full bg-indigo-600 text-white py-2.5 rounded-lg font-medium hover:bg-indigo-700 transition"
+        disabled={!isFormValid}
+        className={`mt-6 w-full py-2.5 rounded-lg font-medium transition
+          ${
+            isFormValid
+              ? "bg-indigo-600 text-white hover:bg-indigo-700"
+              : "bg-gray-300 text-gray-600 cursor-not-allowed"
+          }`}
       >
         Add Student
       </button>
