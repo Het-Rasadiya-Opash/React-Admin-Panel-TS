@@ -24,30 +24,38 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen flex justify-center items-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 to-blue-100">
       <form
         onSubmit={handleLogin}
-        className="bg-white p-6 rounded shadow w-80 space-y-4"
+        className="w-full max-w-sm bg-white p-8 rounded-xl shadow-lg space-y-5"
       >
-        <h2 className="text-xl font-bold text-center">Admin Login</h2>
+        <h2 className="text-2xl font-semibold text-center text-gray-800">
+          Admin Login
+        </h2>
 
-        <input
-          type="email"
-          placeholder="Email"
-          className="border p-2 w-full"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <div className="space-y-3">
+          <input
+            type="email"
+            placeholder="Email address"
+            className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <input
-          type="password"
-          placeholder="Password"
-          className="border p-2 w-full"
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
 
-        {error && <p className="text-red-500 text-sm">{error}</p>}
+        {error && (
+          <p className="text-sm text-red-500 text-center">
+            {error}
+          </p>
+        )}
 
-        <button className="bg-blue-600 text-white w-full py-2 rounded">
+        <button className="w-full bg-indigo-600 text-white py-2.5 rounded-lg font-medium hover:bg-indigo-700 transition">
           Login
         </button>
       </form>

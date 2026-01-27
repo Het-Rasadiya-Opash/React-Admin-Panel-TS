@@ -29,7 +29,7 @@ const AdminDashboard = () => {
   const filteredStudents = students.filter(
     (s) =>
       s.enrollmentNo.toLowerCase().includes(search.toLowerCase()) ||
-      s.marks.toString().includes(search),
+      s.marks.toString().includes(search)
   );
 
   const topStudents = [...students]
@@ -37,7 +37,7 @@ const AdminDashboard = () => {
     .slice(0, 5);
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gray-50">
       <Sidebar active={section} onChange={setSection} />
 
       <div className="flex-1 flex flex-col">
@@ -46,22 +46,28 @@ const AdminDashboard = () => {
         <main className="p-6 space-y-6">
           {section === "dashboard" && (
             <>
-              <h2 className="text-2xl font-bold">Dashboard</h2>
+              <h2 className="text-3xl font-semibold text-gray-800">
+                Dashboard Overview
+              </h2>
 
-              <div className="grid grid-cols-3 gap-4">
-                <div className="bg-white p-4 rounded shadow">
-                  Total Students
-                  <p className="text-2xl font-bold">{students.length}</p>
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="bg-white p-6 rounded-xl shadow-sm border">
+                  <p className="text-sm text-gray-500">Total Students</p>
+                  <p className="text-3xl font-bold text-indigo-600">
+                    {students.length}
+                  </p>
                 </div>
-                <div className="bg-white p-4 rounded shadow">
-                  Passed
-                  <p className="text-2xl font-bold">
+
+                <div className="bg-white p-6 rounded-xl shadow-sm border">
+                  <p className="text-sm text-gray-500">Passed</p>
+                  <p className="text-3xl font-bold text-green-600">
                     {students.filter((s) => s.result === "Pass").length}
                   </p>
                 </div>
-                <div className="bg-white p-4 rounded shadow">
-                  Failed
-                  <p className="text-2xl font-bold">
+
+                <div className="bg-white p-6 rounded-xl shadow-sm border">
+                  <p className="text-sm text-gray-500">Failed</p>
+                  <p className="text-3xl font-bold text-red-600">
                     {students.filter((s) => s.result === "Fail").length}
                   </p>
                 </div>
@@ -70,12 +76,14 @@ const AdminDashboard = () => {
           )}
 
           {section === "students" && (
-            <>
-              <h2 className="text-2xl font-bold">Students</h2>
+            <div className="bg-white rounded-xl shadow-sm border p-6 space-y-4">
+              <h2 className="text-2xl font-semibold text-gray-800">
+                Students List
+              </h2>
 
               <input
-                placeholder="Search by enrollment or marks"
-                className="border p-2 w-full rounded"
+                placeholder="Search by enrollment no or marks"
+                className="w-full md:w-1/2 border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 onChange={(e) => setSearch(e.target.value)}
               />
 
@@ -84,28 +92,39 @@ const AdminDashboard = () => {
                 editable
                 setStudents={updateStudents}
               />
-            </>
+            </div>
           )}
 
           {section === "top-students" && (
-            <>
-              <h2 className="text-2xl font-bold">Top 5 Students</h2>
+            <div className="bg-white rounded-xl shadow-sm border p-6 space-y-4">
+              <h2 className="text-2xl font-semibold text-gray-800">
+                Top 5 Students
+              </h2>
+
               <StudentTable students={topStudents} />
-            </>
+            </div>
           )}
-          
+
           {section === "add-new-student" && (
-            <>
-              <h2 className="text-2xl font-bold">Add New Student Data</h2>
-              <StudentForm students={students} setStudents={updateStudents} />
-            </>
+            <div className="bg-white rounded-xl shadow-sm border p-6 space-y-4">
+              <h2 className="text-2xl font-semibold text-gray-800">
+                Add New Student
+              </h2>
+
+              <StudentForm
+                students={students}
+                setStudents={updateStudents}
+              />
+            </div>
           )}
 
           {section === "settings" && (
-            <>
-              <h2 className="text-2xl font-bold">Settings</h2>
-              <p className="text-gray-600">Coming soon…</p>
-            </>
+            <div className="bg-white rounded-xl shadow-sm border p-6">
+              <h2 className="text-2xl font-semibold text-gray-800">
+                Settings
+              </h2>
+              <p className="text-gray-500 mt-2">Coming soon…</p>
+            </div>
           )}
         </main>
       </div>
