@@ -15,9 +15,15 @@ const AdminRoute = ({ children }: { children: JSX.Element }) => {
 };
 
 const App = () => {
+  // useEffect(() => {
+  //   if (!localStorage.getItem("students")) {
+  //     localStorage.setItem("students", JSON.stringify(demoStudents));
+  //   }
+  // }, []);
+
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/login" />} />
+      <Route path="/" element={<Navigate to="/login" replace />} />
 
       <Route path="/login" element={<Login />} />
 
@@ -30,7 +36,7 @@ const App = () => {
         }
       />
 
-      <Route path="*" element={<Navigate to="/login" />} />
+      <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
   );
 };

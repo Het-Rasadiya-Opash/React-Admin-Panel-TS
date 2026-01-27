@@ -39,8 +39,12 @@ const Login = () => {
             <input
               type="email"
               value={email}
-              className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
-              onChange={(e) => setEmail(e.target.value)}
+              className={`w-full border rounded-lg px-4 py-2 outline-none focus:ring-2 
+    ${error ? "border-red-500 focus:ring-red-500" : "focus:ring-indigo-500"}`}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setError("");
+              }}
             />
           </div>
 
@@ -49,8 +53,12 @@ const Login = () => {
             <input
               type="password"
               value={password}
-              className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
-              onChange={(e) => setPassword(e.target.value)}
+              className={`w-full border rounded-lg px-4 py-2 outline-none focus:ring-2 
+    ${error ? "border-red-500 focus:ring-red-500" : "focus:ring-indigo-500"}`}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setError("");
+              }}
             />
           </div>
         </div>
