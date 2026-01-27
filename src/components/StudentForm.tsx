@@ -62,56 +62,54 @@ const StudentForm = ({
   };
 
   return (
-    <div className="bg-white p-6 rounded-xl shadow-sm border max-w-3xl">
-      <h3 className="text-xl font-semibold text-gray-800 mb-4">
+    <div className="bg-white border rounded-xl shadow-sm w-full max-w-5xl p-4 sm:p-6 lg:p-8">
+      <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-6">
         Student Details
       </h3>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div>
-          <label className="block text-sm text-gray-600 mb-1">Name *</label>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="flex flex-col gap-1">
+          <label className="text-sm text-gray-600">Name</label>
           <input
             name="name"
             value={form.name}
             onChange={handleChange}
-            className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
+            className="border rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
           />
         </div>
 
-        <div>
-          <label className="block text-sm text-gray-600 mb-1">
-            Enrollment No *
-          </label>
+        <div className="flex flex-col gap-1">
+          <label className="text-sm text-gray-600">Enrollment No</label>
           <input
             name="enrollmentNo"
             value={form.enrollmentNo}
             onChange={handleChange}
-            className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
+            className="border rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
           />
         </div>
 
-        <div>
-          <label className="block text-sm text-gray-600 mb-1">Class *</label>
+        <div className="flex flex-col gap-1">
+          <label className="text-sm text-gray-600">Class</label>
           <input
             name="std"
             value={form.std}
             onChange={handleChange}
-            className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
+            className="border rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
           />
         </div>
 
-        <div>
-          <label className="block text-sm text-gray-600 mb-1">Subject *</label>
+        <div className="flex flex-col gap-1">
+          <label className="text-sm text-gray-600">Subject</label>
           <input
             name="subject"
             value={form.subject}
             onChange={handleChange}
-            className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
+            className="border rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
           />
         </div>
 
-        <div>
-          <label className="block text-sm text-gray-600 mb-1">Marks *</label>
+        <div className="flex flex-col gap-1">
+          <label className="text-sm text-gray-600">Marks</label>
           <input
             type="number"
             name="marks"
@@ -119,17 +117,30 @@ const StudentForm = ({
             onChange={handleChange}
             min={0}
             max={100}
-            className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
+            className="border rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
           />
         </div>
 
-        <div>
-          <label className="block text-sm text-gray-600 mb-1">Result *</label>
+        <div className="flex flex-col gap-1">
+          <label className="text-sm text-gray-600">Attendance %</label>
+          <input
+            type="number"
+            name="attendanceAvg"
+            value={form.attendanceAvg}
+            onChange={handleChange}
+            min={0}
+            max={100}
+            className="border rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
+          />
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <label className="text-sm text-gray-600">Result</label>
           <select
             name="result"
             value={form.result}
             onChange={handleChange}
-            className="w-full border rounded-lg px-3 py-2 bg-white focus:ring-2 focus:ring-indigo-500 outline-none"
+            className="border rounded-lg px-3 py-2 bg-white focus:ring-2 focus:ring-indigo-500 outline-none"
           >
             <option value="Pass">Pass</option>
             <option value="Fail">Fail</option>
@@ -138,21 +149,23 @@ const StudentForm = ({
       </div>
 
       {error && (
-        <p className="text-red-500 text-sm mt-3 font-medium">{error}</p>
+        <p className="text-red-500 text-sm mt-4 font-medium">{error}</p>
       )}
 
-      <button
-        onClick={addStudent}
-        disabled={!isFormValid}
-        className={`mt-6 w-full py-2.5 rounded-lg font-medium transition
-          ${
-            isFormValid
-              ? "bg-indigo-600 text-white hover:bg-indigo-700"
-              : "bg-gray-300 text-gray-600 cursor-not-allowed"
-          }`}
-      >
-        Add Student
-      </button>
+      <div className="mt-6 flex justify-end">
+        <button
+          onClick={addStudent}
+          disabled={!isFormValid}
+          className={`w-full sm:w-auto px-8 py-2.5 rounded-lg font-medium transition
+            ${
+              isFormValid
+                ? "bg-indigo-600 text-white hover:bg-indigo-700"
+                : "bg-gray-300 text-gray-600 cursor-not-allowed"
+            }`}
+        >
+          Add Student
+        </button>
+      </div>
     </div>
   );
 };
