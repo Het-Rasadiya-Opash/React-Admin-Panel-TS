@@ -26,7 +26,7 @@ const StudentForm = ({
       ...prev,
       [name]: type === "number" ? Number(value) : value,
     }));
-  };
+    };
 
   const addStudent = () => {
     setStudents([...students, { ...form, id: uuid() }]);
