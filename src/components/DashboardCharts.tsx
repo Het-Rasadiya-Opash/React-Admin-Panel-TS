@@ -1,0 +1,71 @@
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
+} from "recharts";
+const COLORS = ["#6366f1", "#22c55e", "#ef4444"];
+
+const DashboardCharts = ({
+  total,
+  pass,
+  fail,
+}: {
+  total: number;
+  pass: number;
+  fail: number;
+}) => {
+  const barData = [
+    { name: "Total", value: total },
+    { name: "Pass", value: pass },
+    { name: "Fail", value: fail },
+  ];
+
+  const pieData = [
+    { name: "Pass", value: pass },
+    { name: "Fail", value: fail },
+  ];
+
+  return (
+    <div className="grid gap-6 md:grid-cols-2">
+      <div className="bg-white border rounded-2xl shadow-sm p-4 h-64">
+        <p className="text-sm font-medium text-gray-600 mb-2">
+          Students Overview
+        </p>
+
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart data={barData}>
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Bar dataKey="value" radius={[6, 6, 0, 0]} />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+
+      <div className="rounded-2xl p-4 h-64 bg-white/70 backdrop-blur border border-white/40 shadow-lg">
+        <p className="text-sm font-medium text-gray-700 mb-2">
+          Result Distribution
+        </p>
+
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart>
+            <Pie data={pieData} dataKey="value" outerRadius={80} label>
+              {pieData.map((_, i) => (
+                <Cell key={i} fill={COLORS[i]} />
+              ))}
+            </Pie>
+            <Tooltip />
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
+  );
+};
+
+export default DashboardCharts;
