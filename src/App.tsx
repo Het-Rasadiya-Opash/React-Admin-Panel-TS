@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import { useAuth } from "./auth/AuthContext";
-import { useEffect, type JSX } from "react";
+import {  type JSX } from "react";
 import AdminDashboard from "./pages/AdminDashborad";
 // import type { Student } from "./utils/localStorage";
 
