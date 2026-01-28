@@ -57,7 +57,7 @@ const DashboardCharts = ({
         </ResponsiveContainer>
       </div>
 
-      <div className="rounded-2xl p-4 h-64 bg-white/70 backdrop-blur border border-white/40 shadow-lg">
+      <div className="rounded-2xl  p-4 h-64 bg-white/70 backdrop-blur border  shadow-lg">
         <p className="text-sm font-medium text-gray-700 mb-2">
           Result Distribution
         </p>
