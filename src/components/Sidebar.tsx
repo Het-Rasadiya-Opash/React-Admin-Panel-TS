@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 
-
-
 type Section =
   | "dashboard"
   | "students"
