@@ -37,8 +37,9 @@ All data is stored locally using LocalStorage, making it lightweight and easy to
 
 ## Folder Structure
 
-ADMIN-PANEL-REACT-TS/
-│
+ADMIN-PANEL-REACT-TS
+
+
 ├── public/
 │   ├── admin-panel.png
 │   └── vite.svg
