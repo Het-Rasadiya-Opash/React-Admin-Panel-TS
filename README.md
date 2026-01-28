@@ -1,73 +1,92 @@
-# React + TypeScript + Vite
+# Student Management Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern frontend dashboard to manage student records including marks, attendance, subjects, and results with visual analytics.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
 
-## React Compiler
+The Student Management Dashboard is a React + TypeScript application designed to demonstrate real-world frontend concepts such as forms, validation, charts, and state management.  
+All data is stored locally using LocalStorage, making it lightweight and easy to run.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Add, edit, and delete student records
+- Multi-step student form with validation
+- Subject-wise marks tracking
+- Pass / Fail result calculation
+- Attendance percentage tracking
+- Dashboard charts using Recharts
+- Persistent data using LocalStorage
+- Responsive and clean UI
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Frontend:** React
+- **Language:** TypeScript
+- **Build Tool:** Vite
+- **Styling:** CSS / Tailwind CSS
+- **Charts:** Recharts
+- **Storage:** Browser LocalStorage
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Folder Structure
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+ADMIN-PANEL-REACT-TS/
+├── node_modules/
+├── public/
+│   ├── admin-panel.png
+│   └── vite.svg
+├── src/
+│   ├── auth/
+│   │   └── AuthContext.tsx
+│   ├── components/
+│   │   ├── DashboardCharts.tsx
+│   │   ├── Header.tsx
+│   │   ├── Sidebar.tsx
+│   │   ├── StudentForm.tsx
+│   │   └── StudentTable.tsx
+│   ├── pages/
+│   │   └── AdminDashboard.tsx
+│   ├── utils/
+│   │   ├── Data.ts
+│   │   └── localStorage.ts
+│   ├── App.css
+│   ├── App.tsx
+│   ├── index.css
+│   └── main.tsx
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+
+
+---
+
+## Getting Started
+
+### Prerequisites
+- Node.js (v16 or higher)
+- npm
+
+### Installation
+```bash
+npm install
+
+### run the project 
+npm run dev
+
+GitHub: https://github.com/Het-Rasadiya-Opash/React-TypeScript
+
+Deployement : https://react-admin-panel-ts.vercel.app/
