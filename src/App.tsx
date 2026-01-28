@@ -8,7 +8,7 @@ const AdminRoute = ({ children }: { children: JSX.Element }) => {
   const { admin } = useAuth();
 
   if (!admin) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/login"  />;
   }
 
   return children;
@@ -19,7 +19,7 @@ const App = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route path="/" element={<Navigate to="/login"  />} />
 
       <Route path="/login" element={<Login />} />
 
@@ -32,7 +32,7 @@ const App = () => {
         }
       />
 
-      <Route path="*" element={<Navigate to="/login" replace />} />
+      <Route path="*" element={<Navigate to="/login"  />} />
     </Routes>
   );
 };
