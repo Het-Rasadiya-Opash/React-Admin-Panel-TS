@@ -11,9 +11,9 @@ import {
 } from "recharts";
 
 const COLORS = {
-  total: "#6366f1", // purple
-  pass: "#22c55e",  // green
-  fail: "#ef4444",  // red
+  total: "#6366f1", 
+  pass: "#22c55e", 
+  fail: "#ef4444",  
 };
 
 const DashboardCharts = ({
