@@ -4,7 +4,7 @@ import StudentForm from "../components/StudentForm";
 import StudentTable from "../components/StudentTable";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-// import DashboardCharts from "../components/DashboardCharts";
+import DashboardCharts from "../components/DashboardCharts";
 
 type Section =
   | "dashboard"
@@ -73,11 +73,11 @@ const AdminDashboard = () => {
                   </p>
                 </div>
               </div>
-              {/* <DashboardCharts
+              <DashboardCharts
                 total={students.length}
                 pass={students.filter((s) => s.result === "Pass").length}
                 fail={students.filter((s) => s.result === "Fail").length}
-              /> */}
+              />
             </>
           )}
 
