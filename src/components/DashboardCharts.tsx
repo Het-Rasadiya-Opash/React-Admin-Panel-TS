@@ -9,7 +9,12 @@ import {
   Pie,
   Cell,
 } from "recharts";
-const COLORS = ["#6366f1", "#22c55e", "#ef4444"];
+
+const COLORS = {
+  total: "#6366f1", // purple
+  pass: "#22c55e",  // green
+  fail: "#ef4444",  // red
+};
 
 const DashboardCharts = ({
   total,
@@ -21,14 +26,14 @@ const DashboardCharts = ({
   fail: number;
 }) => {
   const barData = [
-    { name: "Total", value: total },
-    { name: "Pass", value: pass },
-    { name: "Fail", value: fail },
+    { name: "Total", value: total, color: COLORS.total },
+    { name: "Pass", value: pass, color: COLORS.pass },
+    { name: "Fail", value: fail, color: COLORS.fail },
   ];
 
   const pieData = [
-    { name: "Pass", value: pass },
-    { name: "Fail", value: fail },
+    { name: "Pass", value: pass, color: COLORS.pass },
+    { name: "Fail", value: fail, color: COLORS.fail },
   ];
 
   return (
@@ -43,7 +48,11 @@ const DashboardCharts = ({
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
-            <Bar dataKey="value" radius={[6, 6, 0, 0]} />
+            <Bar dataKey="value" radius={[6, 6, 0, 0]}>
+              {barData.map((entry, index) => (
+                <Cell key={index} fill={entry.color} />
+              ))}
+            </Bar>
           </BarChart>
         </ResponsiveContainer>
       </div>
@@ -55,9 +64,16 @@ const DashboardCharts = ({
 
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
-            <Pie data={pieData} dataKey="value" outerRadius={80} label>
-              {pieData.map((_, i) => (
-                <Cell key={i} fill={COLORS[i]} />
+            <Pie
+              data={pieData}
+              dataKey="value"
+              cx="50%"
+              cy="50%"
+              outerRadius={80}
+              label
+            >
+              {pieData.map((entry, index) => (
+                <Cell key={index} fill={entry.color} />
               ))}
             </Pie>
             <Tooltip />
