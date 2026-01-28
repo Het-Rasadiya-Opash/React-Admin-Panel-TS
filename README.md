@@ -38,38 +38,45 @@ All data is stored locally using LocalStorage, making it lightweight and easy to
 ## Folder Structure
 
 ADMIN-PANEL-REACT-TS/
-├── node_modules/
+│
 ├── public/
 │   ├── admin-panel.png
 │   └── vite.svg
+│
 ├── src/
 │   ├── auth/
-│   │   └── AuthContext.tsx
+│   │   └── AuthContext.tsx       
+│   │
 │   ├── components/
-│   │   ├── DashboardCharts.tsx
-│   │   ├── Header.tsx
-│   │   ├── Sidebar.tsx
-│   │   ├── StudentForm.tsx
-│   │   └── StudentTable.tsx
+│   │   ├── DashboardCharts.tsx    
+│   │   ├── Header.tsx             
+│   │   ├── Sidebar.tsx           
+│   │   ├── StudentForm.tsx        
+│   │   └── StudentTable.tsx      
+│   │
 │   ├── pages/
-│   │   └── AdminDashboard.tsx
+│   │   └── AdminDashboard.tsx    
+│   │
 │   ├── utils/
-│   │   ├── Data.ts
-│   │   └── localStorage.ts
-│   ├── App.css
-│   ├── App.tsx
-│   ├── index.css
-│   └── main.tsx
+│   │   ├── Data.ts                
+│   │   └── localStorage.ts        
+│   │
+│   ├── App.tsx                    
+│   ├── App.css            
+│   ├── index.css                 
+│   └── main.tsx                   
+│
+├── index.html                     
+├── node_modules/                 
 ├── .gitignore
-├── eslint.config.js
-├── index.html
-├── package-lock.json
-├── package.json
-├── README.md
-├── tsconfig.app.json
-├── tsconfig.json
-├── tsconfig.node.json
-└── vite.config.ts
+├── eslint.config.js               
+├── package.json                   
+├── package-lock.json              
+├── tsconfig.json                  
+├── tsconfig.app.json              
+├── tsconfig.node.json             
+├── vite.config.ts              
+└── README.md                     
 
 
 ---
